@@ -1,16 +1,27 @@
 <template>
   <div id="app">
-    <Login/>
+    <Login />
+    <hr />
+    <div>App.vue 我现在有{{ total }}</div>
+    <Child :money="total" v-on:update:money="total = $event" />
+    <Child :money.sync="total" />
   </div>
 </template>
 
 <script>
 import Login from "./components/Login.vue";
+import Child from "./components/Child.vue";
 
 export default {
   name: "App",
   components: {
     Login,
+    Child,
+  },
+  data() {
+    return {
+      total: 1000,
+    };
   },
 };
 </script>
